@@ -2,7 +2,7 @@
 const express = require('express');
 
 // Import built-in Node.js package 'path' to resolve path of files that are located on the server
-const path = require('path');
+const api = require("path");
 
 // Initialize an instance of Express.js
 const app = express();
@@ -12,21 +12,22 @@ const PORT = 3001;
 
 // Static middleware pointing to the public folder
 app.use(express.static('public'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-// Create Express.js routes for default '/', '/send' and '/routes' endpoints
-app.get('/', (req, res) => res.send('Navigate to /send or /routes'));
+
+app.get("/notes", (req, res) => 
+ res.sendFile(path.join)(__dirname, "public/notes.html"));
+app.get("api/notes", (req, res) =>
+res.sendFile(path.join(__dirname, "db/db.json")));
 
 // listen() method is responsible for listening for incoming connections on the specified port 
 app.listen(PORT, () =>
   console.log(`Example app listening at http://localhost:${PORT}`)
 );
-// Middleware for parsing JSON and urlencoded form data
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use('/api', api);
-// routes
 
-app.get('/notes', (req, res) => 
+app.get('api/notes', (req, res) => {
+    const getNote = json.parse(fs.readFile())
 res.writeFile(path));
 app.get('/notes', (req, res) => 
 res.readFile(termData));
@@ -35,8 +36,12 @@ app.get('/api/notes'), (req, res) => {
     res.json(`${req.method} request received`);
 }
 
-// POST request
+// POST request to save new notes
 app.post('/api/notes', (req, res) => {
+    const data = json.parse(fs.readFile("db/db/json", "utf8"));
+    const 
+        console.log
+    }
     // Let the client know that their POST request was received
     res.json(`${req.method} request received`);
   
@@ -47,6 +52,7 @@ app.post('/api/notes', (req, res) => {
     console.info(`${req.method} request received`);
   });
   
+
   app.listen(PORT, () =>
     console.log(`Express server listening on port ${PORT}!`)
   );
