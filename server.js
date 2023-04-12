@@ -28,7 +28,7 @@ app.listen(PORT, () =>
 
 app.get('api/notes', (req, res) => {
     const getNote = json.parse(fs.readFile())
-res.writeFile(path));
+res.writeFile(path)});
 app.get('/notes', (req, res) => 
 res.readFile(termData));
 //get route the returns a specific term
@@ -39,27 +39,26 @@ app.get('/api/notes'), (req, res) => {
 // POST request to save new notes
 app.post('/api/notes', (req, res) => {
     const data = json.parse(fs.readFile("db/db/json", "utf8"));
-    const 
-        console.log
+    const newNotes = {
+        id: "",
+        title: req.body.title, 
+        text: req.body.text
+        
     }
+        data.push(newNotes);
+        fs.writeToFile("db/db.json", json.sringify(data, null, 002));
+            res.json(data);
+    });
+    
+  // Delete request
+app.delete('/api/notes', (req, res) => {
     // Let the client know that their POST request was received
     res.json(`${req.method} request received`);
-  
-    // Show the user agent information in the terminal
-    console.info(req.rawHeaders);
-  
-    // Log our request to the terminal
-    console.info(`${req.method} request received`);
-  });
   
 
   app.listen(PORT, () =>
     console.log(`Express server listening on port ${PORT}!`)
   );
-  // Delete request
-app.delete('/api/notes', (req, res) => {
-    // Let the client know that their POST request was received
-    res.json(`${req.method} request received`);
   
     // Show the user agent information in the terminal
     console.info(req.rawHeaders);
