@@ -21,8 +21,16 @@ api.post("/notes", (req, res) => {
       res.json(`Note added successfully 🚀`);
 });
 
-api.delete('',(req, res) => {
-    
+api.delete('/notes',(req, res) => {
+    const oldNotes = {
+        title: req.body.title,
+        text: req.body.text,
+
+    } 
+
+    readAndAppend(oldNote, './db/db.json');
+      res.json(`Note added successfully 🚀`);
+
 })
 
 module.exports = api;
