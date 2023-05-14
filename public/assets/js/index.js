@@ -79,17 +79,6 @@ const handleNoteSave = () => {
 
 // Delete the clicked note
 const handleNoteDelete = (e) => {
-  const oldNote = {
-    title: noteTitle.value,
-    text: noteText.value,
-  };
-  deleteNote(oldNote).then(() => {
-    getAndRenderNotes();
-    renderActiveNote();
-  });
-};
-
-  
   // Prevents the click listener for the list from being called when the button inside of it is clicked
   e.stopPropagation();
 
@@ -104,7 +93,7 @@ const handleNoteDelete = (e) => {
     getAndRenderNotes();
     renderActiveNote();
   });
-
+};
 
 // Sets the activeNote and displays it
 const handleNoteView = (e) => {
